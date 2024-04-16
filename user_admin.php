@@ -47,9 +47,10 @@ $result = $stmt->fetchAll();
         <div class="border border-info">
             <!-- サービスのタイトルとそれを編集・削除する画面へ移動するリンクを表示 -->
             <?php foreach($result_service as $r_val): ?>
-                <li class="m-3"><a href="http://localhost/skilshop/service.php?id=<?php echo $r_val['service_id'] ?>"><?php echo str2html($r_val['title']);  ?></a>　<!-- サービスのタイトル -->
-                    [<a href="edit.php?id=<?php echo $r_val['service_id'] ?>">編集</a>]<!-- サービスの編集リンク -->　
-                    [<a href="delete.php?id=<?php echo $r_val['service_id'] ?>">削除</a>]<!-- サービスの削除リンク -->
+                <li class="m-3">
+                    <b><a href="http://localhost/skilshop/service.php?id=<?php echo $r_val['service_id'] ?>"><?php echo str2html($r_val['title']);  ?></a></b>　<!-- サービスのタイトル -->
+                    <button type="button" class="btn btn-info" onclick="location.href='edit.php?id=<?php echo $r_val['service_id'] ?>'">編集</button><!-- サービスの編集リンク -->　
+                    <button type="button" class="btn btn-danger" onclick="location.href= 'delete.php?id=<?php echo $r_val['service_id'] ?>'">削除</button> <!--サービスの削除リンク -->　
                 </li>
             <?php endforeach ?>
         </div>
@@ -58,10 +59,11 @@ $result = $stmt->fetchAll();
         <div class="border border-success">
             <!-- 口コミとそれを編集・削除する画面へ移動するリンクを表示 -->
             <?php foreach($result as $val): ?>
-                <li class="m-3"><a href="http://localhost/skilshop/review.php?id=<?php echo $val['review_id'] ?>"><?php echo $val[3] ?></a>：<!-- 口コミのタイトル -->
-                    <?php echo str2html($val['title']); ?> より　
-                    [<a href="edit_review.php?id=<?php echo $val['review_id'] ?>">編集</a>]<!-- 口コミの編集リンク -->　
-                    [<a href="delete_review.php?id=<?php echo $val['review_id'] ?>">削除</a>]<!-- 口コミの削除リンク -->
+                <li class="m-3">
+                    <b><a href="http://localhost/skilshop/review.php?id=<?php echo $val['review_id'] ?>"><?php echo $val[3] ?></a></b>：<!-- 口コミのタイトル -->
+                    <b><?php echo str2html($val['title']); ?></b> より　
+                    <button type="button" class="btn btn-info" onclick="location.href='edit_review.php?id=<?php echo $val['review_id'] ?>'">編集</button><!-- 口コミの編集リンク -->　
+                    <button type="button" class="btn btn-danger" onclick="location.href= 'delete_review.php?id=<?php echo $val['review_id'] ?>'" >削除</button><!-- 口コミの削除リンク -->
                 </li>
             <?php endforeach ?>
         </div>

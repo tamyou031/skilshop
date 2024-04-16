@@ -29,6 +29,11 @@ try{
 } catch(PDOException $e){
     $msg = $e->getMessage();
 }
+
+$tax = 0.1;  //税率
+$zeinuki = $result['price']/(1+$tax);
+$zeinuki_int = round($zeinuki);
+
 ?>
 
 <title>編集</title>
@@ -49,8 +54,8 @@ try{
                 </div>
                 <!-- 料金 -->
                 <div class="mb-4">
-                    <label class="form-label">料金：</label>
-                    <input type="number" name="price" value="<?php if (!empty($result['price'])) echo(htmlspecialchars($result['price'], ENT_QUOTES, 'UTF-8'));?>" min="1" required>円
+                    <label class="form-label">料金（税抜き）：</label>
+                    <input type="number" name="price" value="<?php if (!empty($result['price'])) echo(htmlspecialchars($zeinuki_int, ENT_QUOTES, 'UTF-8'));?>" min="1" required>円
                 </div>
                 <!-- csrf対策用トークン -->
                 <input type="hidden" name="token" value="<?php echo $token; ?>">

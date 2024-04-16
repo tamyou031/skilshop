@@ -8,6 +8,8 @@ require_once __DIR__ . '/token_check.php';
 $dsn = "mysql:host=127.0.0.1:3309; dbname=skilshop";
 $u_name = "root";
 $p_word = "";
+$tax = 1.1; // 税率
+$zeikomi = $_POST['price']*$tax;  //税込み価格
 try {
     if((preg_match('/^[0-9]+$/',$_POST['price']))){ //料金が全て数字で送信されているかチェック
       //データベースへ接続
@@ -15,8 +17,8 @@ try {
       //登録内容を更新
       $sql = "UPDATE make_service SET title = :title, text = :text,price = :price WHERE service_id = :service_id";
       $stmt = $dbh->prepare($sql);
-      //プレースホルダーにedit.phpにて送信されたものを代入し、内容に更新する
-      $stmt->execute(array(':title' => $_POST['title'], ':text' => $_POST['text'],'price' => $_POST['price'], ':service_id' => $_POST['id']));
+      //プレースホルダーにedit.phpにて送信されたものを代入し、内容を更新する
+      $stmt->execute(array(':title' => $_POST['title'], ':text' => $_POST['text'],'price' => (int)$zeikomi, ':service_id' => $_POST['id']));
       echo "情報を更新しました。";
   }else{
     $id = $_POST['id'];

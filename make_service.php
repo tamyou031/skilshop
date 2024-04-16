@@ -31,7 +31,7 @@ $_SESSION['token'] = $token;
             <!-- 料金 -->
             <div class="mb-3">
                 <label class="form-label">
-                    <b class="fs-3">・料金（税込み）</b><br>
+                    <b class="fs-3">・料金（税抜き）</b><br>
                 </label>
                 <input type="number" name="price" min="1" required >　円
             </div>

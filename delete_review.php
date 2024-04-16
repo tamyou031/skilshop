@@ -1,5 +1,7 @@
 <!-- 口コミの削除画面 -->
 <?php
+//ヘッダー部分のテンプレート
+include __DIR__ . '/inc/header.php';
 // ログインチェック
 include __DIR__ . '/inc/login_check.php';
 ?>

@@ -12,7 +12,9 @@ require_once __DIR__ . '/token_check.php';
 $username = $_SESSION['user_name']; //ユーザー名
 $title = $_POST['title'];   //タイトル
 $text = $_POST['text']; //サービス内容
-$price = $_POST['price'];   //料金
+$tax = 0.1; //税率
+$zeikomi =  $_POST['price'] * (1+$tax);
+$price = round($zeikomi);  //料金(税込み)
 //イメージ画像
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $check = isset($_POST["thumbnail"]) ? $_POST["thumbnail"] : 0;
