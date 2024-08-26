@@ -23,7 +23,8 @@
 該当したタイトルのサービスを表示します。  
 
 
-# 使用言語
+# 使用言語・環境  
+・Windows
 ・HTML、CSS（Bootstrapを使用）  
 ・PHP（バージョン8.2.12）  
 ・MySQL（バージョン15.1 Distrib 10.4.32-MariaDB）  
